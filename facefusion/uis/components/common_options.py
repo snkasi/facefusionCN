@@ -18,7 +18,7 @@ def render() -> None:
 
 	COMMON_OPTIONS_CHECKBOX_GROUP = gradio.Checkboxgroup(
 		label = translator.get('uis.common_options_checkbox_group'),
-		choices = uis_choices.common_options,
+		choices = translator.translate_choices(uis_choices.common_options, 'common_option'),
 		value = common_options
 	)
 

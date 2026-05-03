@@ -34,7 +34,7 @@ def render() -> None:
 	with gradio.Row():
 		FACE_DETECTOR_MODEL_DROPDOWN = gradio.Dropdown(
 			label = translator.get('uis.face_detector_model_dropdown'),
-			choices = facefusion.choices.face_detector_models,
+			choices = translator.translate_choices(facefusion.choices.face_detector_models, 'face_detector_model'),
 			value = state_manager.get_item('face_detector_model')
 		)
 		FACE_DETECTOR_SIZE_DROPDOWN = gradio.Dropdown(**face_detector_size_dropdown_options)

@@ -22,7 +22,7 @@ def render() -> None:
 	has_frame_colorizer = 'frame_colorizer' in state_manager.get_item('processors')
 	FRAME_COLORIZER_MODEL_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.model_dropdown', 'facefusion.processors.modules.frame_colorizer'),
-		choices = frame_colorizer_choices.frame_colorizer_models,
+		choices = translator.translate_choices(frame_colorizer_choices.frame_colorizer_models, 'frame_colorizer_model'),
 		value = state_manager.get_item('frame_colorizer_model'),
 		visible = has_frame_colorizer
 	)

@@ -46,7 +46,7 @@ def render() -> None:
 	has_face_editor = 'face_editor' in state_manager.get_item('processors')
 	FACE_EDITOR_MODEL_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.model_dropdown', 'facefusion.processors.modules.face_editor'),
-		choices = face_editor_choices.face_editor_models,
+		choices = translator.translate_choices(face_editor_choices.face_editor_models, 'face_editor_model'),
 		value = state_manager.get_item('face_editor_model'),
 		visible = has_face_editor
 	)

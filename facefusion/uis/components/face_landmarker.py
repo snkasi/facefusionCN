@@ -18,7 +18,7 @@ def render() -> None:
 
 	FACE_LANDMARKER_MODEL_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.face_landmarker_model_dropdown'),
-		choices = facefusion.choices.face_landmarker_models,
+		choices = translator.translate_choices(facefusion.choices.face_landmarker_models, 'face_landmarker_model'),
 		value = state_manager.get_item('face_landmarker_model')
 	)
 	FACE_LANDMARKER_SCORE_SLIDER = gradio.Slider(

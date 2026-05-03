@@ -2,6 +2,21 @@ from facefusion.types import Locales
 
 LOCALES : Locales =\
 {
+	'zh':
+	{
+		'help':
+		{
+			'model': '选择用于换脸的模型',
+			'pixel_boost': '选择换脸的像素增强分辨率',
+			'weight': '指定应用于面部的增强强度'
+		},
+		'uis':
+		{
+			'model_dropdown': '换脸模型',
+			'pixel_boost_dropdown': '换脸像素增强',
+			'weight_slider': '换脸强度'
+		}
+	},
 	'en':
 	{
 		'help':

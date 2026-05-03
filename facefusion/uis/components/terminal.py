@@ -24,7 +24,7 @@ def render() -> None:
 
 	LOG_LEVEL_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.log_level_dropdown'),
-		choices = facefusion.choices.log_levels,
+		choices = translator.translate_choices(facefusion.choices.log_levels, 'log_level'),
 		value = state_manager.get_item('log_level')
 	)
 	TERMINAL_TEXTBOX = gradio.Textbox(

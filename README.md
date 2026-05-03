@@ -1,11 +1,35 @@
-FaceFusion
-==========
+FaceFusion CN
+=============
 
-> Industry leading face manipulation platform.
+> 行业领先的人脸操作平台 · 完整中文本地化版本
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/facefusion/facefusion/ci.yml.svg?branch=master)](https://github.com/facefusion/facefusion/actions?query=workflow:ci)
 [![Coverage Status](https://img.shields.io/coveralls/facefusion/facefusion.svg)](https://coveralls.io/r/facefusion/facefusion)
 ![License](https://img.shields.io/badge/license-OpenRAIL--AS-green)
+
+
+CN 版本特性
+-----------
+
+本版本基于官方 [facefusion](https://github.com/facefusion/facefusion) 开发，针对中文用户做了以下改进：
+
+### 1. 完整中文本地化
+
+- 所有 UI 界面、菜单、按钮、提示信息均已翻译为中文
+- 翻译不仅准确，还结合中文语境做了友好化处理，便于理解
+- 默认启动即为中文界面，无需额外配置
+
+### 2. NSFW 检测解除
+
+- 移除了内容安全检测（NSFW）限制，解锁全部使用场景
+- 不再对输入内容进行敏感内容拦截
+
+### 3. WebUI 配置持久化
+
+- 所有 WebUI 中的设置会自动保存，下次打开时自动恢复
+- 状态保存在 `~/.facefusion/ui_state.json`，无需每次重新调整
+
+> **提示：** 以上修改仅针对本仓库的本地副本，不影响官方原版 facefusion 项目。如需了解更多信息，请参阅 [facefusion 官方文档](https://docs.facefusion.io)。
 
 
 Preview

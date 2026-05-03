@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 import gradio
 
@@ -10,12 +10,19 @@ from facefusion.uis.core import register_ui_component
 PROCESSORS_CHECKBOX_GROUP : Optional[gradio.CheckboxGroup] = None
 
 
+def translate_processor(processor : str) -> Tuple[str, str]:
+	translated = translator.get('uis.processor.' + processor)
+	if translated:
+		return (translated, processor)
+	return (processor, processor)
+
+
 def render() -> None:
 	global PROCESSORS_CHECKBOX_GROUP
 
 	PROCESSORS_CHECKBOX_GROUP = gradio.CheckboxGroup(
 		label = translator.get('uis.processors_checkbox_group'),
-		choices = sort_processors(state_manager.get_item('processors')),
+		choices = [ translate_processor(p) for p in sort_processors(state_manager.get_item('processors')) ],
 		value = state_manager.get_item('processors')
 	)
 	register_ui_component('processors_checkbox_group', PROCESSORS_CHECKBOX_GROUP)
@@ -35,7 +42,7 @@ def update_processors(processors : List[str]) -> gradio.CheckboxGroup:
 			return gradio.CheckboxGroup()
 
 	state_manager.set_item('processors', processors)
-	return gradio.CheckboxGroup(value = state_manager.get_item('processors'), choices = sort_processors(state_manager.get_item('processors')))
+	return gradio.CheckboxGroup(value = state_manager.get_item('processors'), choices = [ translate_processor(p) for p in sort_processors(state_manager.get_item('processors')) ])
 
 
 def sort_processors(processors : List[str]) -> List[str]:

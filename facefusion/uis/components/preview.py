@@ -44,14 +44,14 @@ def render() -> None:
 	if is_image(state_manager.get_item('target_path')):
 		target_vision_frame = read_static_image(state_manager.get_item('target_path'))
 		reference_vision_frame = read_static_image(state_manager.get_item('target_path'))
-		preview_vision_frame = process_preview_frame(reference_vision_frame, source_vision_frames, source_audio_frame, source_voice_frame, target_vision_frame, uis_choices.preview_modes[0], uis_choices.preview_resolutions[-1])
+		preview_vision_frame = process_preview_frame(reference_vision_frame, source_vision_frames, source_audio_frame, source_voice_frame, target_vision_frame, state_manager.get_item('preview_mode') or uis_choices.preview_modes[0], state_manager.get_item('preview_resolution') or uis_choices.preview_resolutions[-1])
 		preview_image_options['value'] = cv2.cvtColor(preview_vision_frame, cv2.COLOR_BGR2RGB)
 		preview_image_options['elem_classes'] = [ 'image-preview', 'is-' + detect_frame_orientation(preview_vision_frame) ]
 
 	if is_video(state_manager.get_item('target_path')):
 		temp_vision_frame = read_video_frame(state_manager.get_item('target_path'), state_manager.get_item('reference_frame_number'))
 		reference_vision_frame = read_video_frame(state_manager.get_item('target_path'), state_manager.get_item('reference_frame_number'))
-		preview_vision_frame = process_preview_frame(reference_vision_frame, source_vision_frames, source_audio_frame, source_voice_frame, temp_vision_frame, uis_choices.preview_modes[0], uis_choices.preview_resolutions[-1])
+		preview_vision_frame = process_preview_frame(reference_vision_frame, source_vision_frames, source_audio_frame, source_voice_frame, temp_vision_frame, state_manager.get_item('preview_mode') or uis_choices.preview_modes[0], state_manager.get_item('preview_resolution') or uis_choices.preview_resolutions[-1])
 		preview_image_options['value'] = cv2.cvtColor(preview_vision_frame, cv2.COLOR_BGR2RGB)
 		preview_image_options['elem_classes'] = [ 'image-preview', 'is-' + detect_frame_orientation(preview_vision_frame) ]
 		preview_image_options['visible'] = True
@@ -90,14 +90,10 @@ def listen() -> None:
 
 	for ui_component in get_ui_components(
 	[
-		'background_remover_fill_color_red_number',
-		'background_remover_fill_color_green_number',
-		'background_remover_fill_color_blue_number',
-		'background_remover_fill_color_alpha_number',
-		'background_remover_despill_color_red_number',
-		'background_remover_despill_color_green_number',
-		'background_remover_despill_color_blue_number',
-		'background_remover_despill_color_alpha_number',
+		'background_remover_color_red_number',
+		'background_remover_color_green_number',
+		'background_remover_color_blue_number',
+		'background_remover_color_alpha_number',
 		'face_debugger_items_checkbox_group',
 		'frame_colorizer_size_dropdown',
 		'face_mask_types_checkbox_group',
@@ -181,6 +177,8 @@ def listen() -> None:
 
 
 def update_preview_image(preview_mode : PreviewMode, preview_resolution : str, frame_number : int = 0) -> gradio.Image:
+	state_manager.set_item('preview_mode', preview_mode)
+	state_manager.set_item('preview_resolution', preview_resolution)
 	while process_manager.is_checking():
 		sleep(0.5)
 
@@ -300,7 +298,7 @@ def extract_crop_frame(vision_frame : VisionFrame, face : Face) -> Optional[Visi
 
 
 def prepare_output_frame(target_vision_frame : VisionFrame, temp_vision_frame : VisionFrame, temp_vision_mask : Mask) -> VisionFrame:
-	temp_vision_mask = temp_vision_mask.clip(state_manager.get_item('background_remover_fill_color')[-1], 255)
+	temp_vision_mask = temp_vision_mask.clip(state_manager.get_item('background_remover_color')[-1], 255)
 	temp_vision_frame = merge_vision_mask(temp_vision_frame, temp_vision_mask)
 	temp_vision_frame = cv2.resize(temp_vision_frame, target_vision_frame.shape[1::-1])
 	return temp_vision_frame

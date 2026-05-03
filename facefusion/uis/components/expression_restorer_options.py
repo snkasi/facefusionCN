@@ -36,7 +36,7 @@ def render() -> None:
 	)
 	EXPRESSION_RESTORER_AREAS_CHECKBOX_GROUP = gradio.CheckboxGroup(
 		label = translator.get('uis.areas_checkbox_group', 'facefusion.processors.modules.expression_restorer'),
-		choices = expression_restorer_choices.expression_restorer_areas,
+		choices = translator.translate_choices(expression_restorer_choices.expression_restorer_areas, 'expression_restorer_area'),
 		value = state_manager.get_item('expression_restorer_areas'),
 		visible = has_expression_restorer
 	)

@@ -20,7 +20,7 @@ def render() -> None:
 	has_age_modifier = 'age_modifier' in state_manager.get_item('processors')
 	AGE_MODIFIER_MODEL_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.model_dropdown', 'facefusion.processors.modules.age_modifier'),
-		choices = age_modifier_choices.age_modifier_models,
+		choices = translator.translate_choices(age_modifier_choices.age_modifier_models, 'age_modifier_model'),
 		value = state_manager.get_item('age_modifier_model'),
 		visible = has_age_modifier
 	)

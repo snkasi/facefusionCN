@@ -2,25 +2,36 @@ from facefusion.types import Locales
 
 LOCALES : Locales =\
 {
+	'zh':
+	{
+		'help':
+		{
+			'model': '选择用于移除背景的模型',
+			'color': '为背景应用红、绿、蓝和 Alpha 通道值'
+		},
+		'uis':
+		{
+			'model_dropdown': '背景移除模型',
+			'color_red_number': '背景颜色 - 红色',
+			'color_green_number': '背景颜色 - 绿色',
+			'color_blue_number': '背景颜色 - 蓝色',
+			'color_alpha_number': '背景颜色 - 透明度'
+		}
+	},
 	'en':
 	{
 		'help':
 		{
 			'model': 'choose the model responsible for removing the background',
-			'fill_color': 'apply red, green, blue and alpha values to the background',
-			'despill_color': 'remove red, green, blue and alpha values from the foreground'
+			'color': 'apply red, green blue and alpha values to the background'
 		},
 		'uis':
 		{
 			'model_dropdown': 'BACKGROUND REMOVER MODEL',
-			'fill_color_red_number': 'FILL COLOR RED',
-			'fill_color_green_number': 'FILL COLOR GREEN',
-			'fill_color_blue_number': 'FILL COLOR BLUE',
-			'fill_color_alpha_number': 'FILL COLOR ALPHA',
-			'despill_color_red_number': 'DESPILL COLOR RED',
-			'despill_color_green_number': 'DESPILL COLOR GREEN',
-			'despill_color_blue_number': 'DESPILL COLOR BLUE',
-			'despill_color_alpha_number': 'DESPILL COLOR ALPHA'
+			'color_red_number': 'BACKGROUND COLOR RED',
+			'color_green_number': 'BACKGROUND COLOR GREEN',
+			'color_blue_number': 'BACKGROUND COLOR BLUE',
+			'color_alpha_number': 'BACKGROUND COLOR ALPHA'
 		}
 	}
 }

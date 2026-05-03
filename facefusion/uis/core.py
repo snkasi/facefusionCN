@@ -73,6 +73,9 @@ def init() -> None:
 	os.environ['GRADIO_ANALYTICS_ENABLED'] = '0'
 	os.environ['GRADIO_TEMP_DIR'] = os.path.join(state_manager.get_item('temp_path'), 'gradio')
 
+	# 加载上次保存的 UI 状态
+	state_manager.load_ui_state()
+
 	logging.getLogger('asyncio').setLevel(logging.CRITICAL)
 	warnings.filterwarnings('ignore', category = UserWarning, module = 'gradio')
 	gradio.processing_utils._check_allowed = uis_overrides.mock

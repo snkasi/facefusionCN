@@ -33,13 +33,13 @@ def render() -> None:
 	with gradio.Row():
 		PREVIEW_MODE_DROPDOWN = gradio.Dropdown(
 			label = translator.get('uis.preview_mode_dropdown'),
-			value = uis_choices.preview_modes[0],
-			choices = uis_choices.preview_modes,
+			value = state_manager.get_item('preview_mode') or uis_choices.preview_modes[0],
+			choices = translator.translate_choices(uis_choices.preview_modes, 'preview_mode'),
 			visible = True
 		)
 		PREVIEW_RESOLUTION_DROPDOWN = gradio.Dropdown(
 			label = translator.get('uis.preview_resolution_dropdown'),
-			value = uis_choices.preview_resolutions[-1],
+			value = state_manager.get_item('preview_resolution') or uis_choices.preview_resolutions[-1],
 			choices = uis_choices.preview_resolutions,
 			visible = True
 		)

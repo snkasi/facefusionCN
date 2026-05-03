@@ -69,8 +69,8 @@ def create_static_model_set(download_scope : DownloadScope) -> ModelSet:
 		{
 			'__metadata__':
 			{
-				'vendor': 'Anjok07',
-				'license': 'MIT',
+				'vendor': 'Unknown',
+				'license': 'Non-Commercial',
 				'year': 2023
 			},
 			'hashes':

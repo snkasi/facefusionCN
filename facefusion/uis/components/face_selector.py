@@ -52,7 +52,7 @@ def render() -> None:
 		reference_face_gallery_options['value'] = extract_gallery_frames(target_vision_frame)
 	FACE_SELECTOR_MODE_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.face_selector_mode_dropdown'),
-		choices = facefusion.choices.face_selector_modes,
+		choices = translator.translate_choices(facefusion.choices.face_selector_modes, 'face_selector_mode'),
 		value = state_manager.get_item('face_selector_mode')
 	)
 	REFERENCE_FACE_POSITION_GALLERY = gradio.Gallery(**reference_face_gallery_options)
@@ -60,17 +60,17 @@ def render() -> None:
 		with gradio.Row():
 			FACE_SELECTOR_ORDER_DROPDOWN = gradio.Dropdown(
 				label = translator.get('uis.face_selector_order_dropdown'),
-				choices = facefusion.choices.face_selector_orders,
+				choices = translator.translate_choices(facefusion.choices.face_selector_orders, 'face_selector_order'),
 				value = state_manager.get_item('face_selector_order')
 			)
 			FACE_SELECTOR_GENDER_DROPDOWN = gradio.Dropdown(
 				label = translator.get('uis.face_selector_gender_dropdown'),
-				choices = [ 'none' ] + facefusion.choices.face_selector_genders,
+				choices = [ ('none', 'none') ] + translator.translate_choices(facefusion.choices.face_selector_genders, 'gender'),
 				value = state_manager.get_item('face_selector_gender') or 'none'
 			)
 			FACE_SELECTOR_RACE_DROPDOWN = gradio.Dropdown(
 				label = translator.get('uis.face_selector_race_dropdown'),
-				choices = [ 'none' ] + facefusion.choices.face_selector_races,
+				choices = [ ('none', 'none') ] + translator.translate_choices(facefusion.choices.face_selector_races, 'race'),
 				value = state_manager.get_item('face_selector_race') or 'none'
 			)
 		with gradio.Row():

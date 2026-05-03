@@ -16,7 +16,7 @@ def render() -> None:
 
 	DOWNLOAD_PROVIDERS_CHECKBOX_GROUP = gradio.CheckboxGroup(
 		label = translator.get('uis.download_providers_checkbox_group'),
-		choices = facefusion.choices.download_providers,
+		choices = translator.translate_choices(facefusion.choices.download_providers, 'download_provider'),
 		value = state_manager.get_item('download_providers')
 	)
 

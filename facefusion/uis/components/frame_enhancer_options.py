@@ -20,7 +20,7 @@ def render() -> None:
 	has_frame_enhancer = 'frame_enhancer' in state_manager.get_item('processors')
 	FRAME_ENHANCER_MODEL_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.model_dropdown', 'facefusion.processors.modules.frame_enhancer'),
-		choices = frame_enhancer_choices.frame_enhancer_models,
+		choices = translator.translate_choices(frame_enhancer_choices.frame_enhancer_models, 'frame_enhancer_model'),
 		value = state_manager.get_item('frame_enhancer_model'),
 		visible = has_frame_enhancer
 	)

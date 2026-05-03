@@ -20,7 +20,7 @@ def render() -> None:
 	has_lip_syncer = 'lip_syncer' in state_manager.get_item('processors')
 	LIP_SYNCER_MODEL_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.model_dropdown', 'facefusion.processors.modules.lip_syncer'),
-		choices = lip_syncer_choices.lip_syncer_models,
+		choices = translator.translate_choices(lip_syncer_choices.lip_syncer_models, 'lip_syncer_model'),
 		value = state_manager.get_item('lip_syncer_model'),
 		visible = has_lip_syncer
 	)

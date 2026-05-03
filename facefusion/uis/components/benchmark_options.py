@@ -19,7 +19,7 @@ def render() -> None:
 
 	BENCHMARK_MODE_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.benchmark_mode_dropdown'),
-		choices = facefusion.choices.benchmark_modes,
+		choices = translator.translate_choices(facefusion.choices.benchmark_modes, 'benchmark_mode'),
 		value = state_manager.get_item('benchmark_mode')
 	)
 	BENCHMARK_RESOLUTIONS_CHECKBOX_GROUP = gradio.CheckboxGroup(

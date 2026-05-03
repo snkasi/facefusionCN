@@ -36,7 +36,7 @@ def render() -> None:
 		with gradio.Column(visible = is_job_manager) as JOB_MANAGER_WRAPPER:
 			JOB_MANAGER_JOB_ACTION_DROPDOWN = gradio.Dropdown(
 				label = translator.get('uis.job_manager_job_action_dropdown'),
-				choices = uis_choices.job_manager_actions,
+				choices = translator.translate_choices(uis_choices.job_manager_actions, 'job_manager_action'),
 				value = get_first(uis_choices.job_manager_actions)
 			)
 			JOB_MANAGER_JOB_ID_TEXTBOX = gradio.Textbox(

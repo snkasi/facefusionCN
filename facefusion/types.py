@@ -50,7 +50,7 @@ FaceStore = TypedDict('FaceStore',
 	'static_faces' : FaceSet
 })
 
-Language = Literal['en']
+Language = Literal['en', 'zh']
 Locales : TypeAlias = Dict[Language, Dict[str, Any]]
 LocalePoolSet : TypeAlias = Dict[str, Locales]
 
@@ -325,7 +325,9 @@ StateKey = Literal\
 	'halt_on_error',
 	'job_id',
 	'job_status',
-	'step_index'
+	'step_index',
+	'preview_mode',
+	'preview_resolution'
 ]
 State = TypedDict('State',
 {
@@ -395,7 +397,9 @@ State = TypedDict('State',
 	'halt_on_error' : bool,
 	'job_id' : str,
 	'job_status' : JobStatus,
-	'step_index' : int
+	'step_index' : int,
+	'preview_mode' : str,
+	'preview_resolution' : str
 })
 ApplyStateItem : TypeAlias = Callable[[Any, Any], None]
 StateSet : TypeAlias = Dict[AppContext, State]

@@ -1,10 +1,11 @@
 import importlib
-from typing import Optional
+import os
+from typing import List, Optional, Tuple
 
 from facefusion.types import Language, LocalePoolSet, Locales
 
 LOCALE_POOL_SET : LocalePoolSet = {}
-CURRENT_LANGUAGE : Language = 'en'
+CURRENT_LANGUAGE : Language = 'en' if os.environ.get('FACEFUSION_LANGUAGE') == 'en' else 'zh'
 
 
 def __autoload__(module_name : str) -> None:
@@ -33,3 +34,13 @@ def get(notation : str, module_name : str = 'facefusion') -> Optional[str]:
 				return current
 
 	return None
+
+
+def translate_choice(choice_key : str, choice_value : str = None, module_name : str = 'facefusion') -> Tuple[str, str]:
+	choice_value = choice_value if choice_value is not None else choice_key
+	translated = get('choices.' + choice_key, module_name)
+	return (translated, choice_value) if translated else (choice_value, choice_value)
+
+
+def translate_choices(choices : List[str], prefix : str = '', module_name : str = 'facefusion') -> List[Tuple[str, str]]:
+	return [ translate_choice(prefix + '.' + choice if prefix else choice, choice, module_name) for choice in choices ]

@@ -14,7 +14,7 @@ def render() -> None:
 
 	UI_WORKFLOW_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.ui_workflow'),
-		choices = facefusion.choices.ui_workflows,
+		choices = translator.translate_choices(facefusion.choices.ui_workflows, 'ui_workflow'),
 		value = state_manager.get_item('ui_workflow'),
 		interactive = True
 	)

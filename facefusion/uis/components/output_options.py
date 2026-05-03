@@ -83,7 +83,7 @@ def render() -> None:
 	)
 	OUTPUT_VIDEO_PRESET_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.output_video_preset_dropdown'),
-		choices = facefusion.choices.output_video_presets,
+		choices = translator.translate_choices(facefusion.choices.output_video_presets, 'output_video_preset'),
 		value = state_manager.get_item('output_video_preset'),
 		visible = is_video(state_manager.get_item('target_path'))
 	)

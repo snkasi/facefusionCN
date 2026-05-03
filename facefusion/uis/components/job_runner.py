@@ -34,7 +34,7 @@ def render() -> None:
 		with gradio.Column(visible = is_job_runner) as JOB_RUNNER_WRAPPER:
 			JOB_RUNNER_JOB_ACTION_DROPDOWN = gradio.Dropdown(
 				label = translator.get('uis.job_runner_job_action_dropdown'),
-				choices = uis_choices.job_runner_actions,
+				choices = translator.translate_choices(uis_choices.job_runner_actions, 'job_runner_action'),
 				value = get_first(uis_choices.job_runner_actions)
 			)
 			JOB_RUNNER_JOB_ID_DROPDOWN = gradio.Dropdown(

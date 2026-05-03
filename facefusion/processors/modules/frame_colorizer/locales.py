@@ -2,6 +2,21 @@ from facefusion.types import Locales
 
 LOCALES : Locales =\
 {
+	'zh':
+	{
+		'help':
+		{
+			'model': '选择用于帧上色的模型',
+			'size': '指定传递给帧上色器的帧尺寸',
+			'blend': '将上色后的帧与原图进行混合'
+		},
+		'uis':
+		{
+			'blend_slider': '帧上色混合度',
+			'model_dropdown': '帧上色模型',
+			'size_dropdown': '帧上色尺寸'
+		}
+	},
 	'en':
 	{
 		'help':

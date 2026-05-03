@@ -17,7 +17,7 @@ def render() -> None:
 
 	VIDEO_MEMORY_STRATEGY_DROPDOWN = gradio.Dropdown(
 		label = translator.get('uis.video_memory_strategy_dropdown'),
-		choices = facefusion.choices.video_memory_strategies,
+		choices = translator.translate_choices(facefusion.choices.video_memory_strategies, 'video_memory_strategy'),
 		value = state_manager.get_item('video_memory_strategy')
 	)
 	SYSTEM_MEMORY_LIMIT_SLIDER = gradio.Slider(

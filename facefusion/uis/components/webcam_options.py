@@ -28,7 +28,7 @@ def render() -> None:
 	)
 	WEBCAM_MODE_RADIO = gradio.Radio(
 		label = translator.get('uis.webcam_mode_radio'),
-		choices = uis_choices.webcam_modes,
+		choices = translator.translate_choices(uis_choices.webcam_modes, 'webcam_mode'),
 		value = uis_choices.webcam_modes[0]
 	)
 	WEBCAM_RESOLUTION_DROPDOWN = gradio.Dropdown(

@@ -9,6 +9,7 @@ from facefusion.execution import get_available_execution_providers
 from facefusion.ffmpeg import get_available_encoder_set
 from facefusion.filesystem import get_file_name, resolve_file_paths
 from facefusion.jobs import job_store
+from facefusion.uis import choices as uis_choices
 from facefusion.processors.core import get_processors_modules
 from facefusion.sanitizer import sanitize_int_range, sanitize_job_id
 
@@ -202,6 +203,8 @@ def create_uis_program() -> ArgumentParser:
 	group_uis.add_argument('--open-browser', help = translator.get('help.open_browser'), action = 'store_true', default = config.get_bool_value('uis', 'open_browser'))
 	group_uis.add_argument('--ui-layouts', help = translator.get('help.ui_layouts').format(choices = ', '.join(available_ui_layouts)), default = config.get_str_list('uis', 'ui_layouts', 'default'), choices = available_ui_layouts, nargs = '+', metavar = 'UI_LAYOUTS')
 	group_uis.add_argument('--ui-workflow', help = translator.get('help.ui_workflow'), default = config.get_str_value('uis', 'ui_workflow', 'instant_runner'), choices = facefusion.choices.ui_workflows)
+	group_uis.add_argument('--preview-mode', help = translator.get('help.preview_mode'), default = config.get_str_value('uis', 'preview_mode', uis_choices.preview_modes[0]), choices = uis_choices.preview_modes)
+	group_uis.add_argument('--preview-resolution', help = translator.get('help.preview_resolution'), default = config.get_str_value('uis', 'preview_resolution', uis_choices.preview_resolutions[-1]), choices = uis_choices.preview_resolutions)
 	return program
 
 

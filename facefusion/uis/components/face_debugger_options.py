@@ -16,7 +16,7 @@ def render() -> None:
 	has_face_debugger = 'face_debugger' in state_manager.get_item('processors')
 	FACE_DEBUGGER_ITEMS_CHECKBOX_GROUP = gradio.CheckboxGroup(
 		label = translator.get('uis.items_checkbox_group', 'facefusion.processors.modules.face_debugger'),
-		choices = face_debugger_choices.face_debugger_items,
+		choices = translator.translate_choices(face_debugger_choices.face_debugger_items, 'face_debugger_item'),
 		value = state_manager.get_item('face_debugger_items'),
 		visible = has_face_debugger
 	)

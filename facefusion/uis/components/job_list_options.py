@@ -20,7 +20,7 @@ def render() -> None:
 
 		JOB_LIST_JOB_STATUS_CHECKBOX_GROUP = gradio.CheckboxGroup(
 			label = translator.get('uis.job_list_status_checkbox_group'),
-			choices = facefusion.choices.job_statuses,
+			choices = translator.translate_choices(facefusion.choices.job_statuses, 'job_status'),
 			value = job_status
 		)
 		register_ui_component('job_list_job_status_checkbox_group', JOB_LIST_JOB_STATUS_CHECKBOX_GROUP)
